@@ -1,0 +1,29 @@
+404.html
+  s_d959039120c485::t_38016a34be3166 1-49
+assets/css/style.css
+  s_d959039120c485::t_b28fb0fb613b0d 1-322
+assets/js/main.js
+  s_d959039120c485::t_5632c53cb1bcbd 1-65
+index.html
+  s_d959039120c485::t_efc592b2a4c795 1-300
+privacy.html
+  s_d959039120c485::t_03467b4b33dff6 1-90
+support.html
+  s_d959039120c485::t_2a12ddfd2cea82 1-107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ca6b15ad3506218a38b7cbbaf9f2aa38b96e06e2",
+  "prompts": {},
+  "sessions": {
+    "s_d959039120c485": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "03cb2094-c1ed-4e76-8046-06e30b42da25",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Dian Maisara <dian.maisara@foodpanda.com>"
+    }
+  }
+}
