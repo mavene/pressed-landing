@@ -1,0 +1,322 @@
+/* Pressed landing page.
+   Palette and type are taken from the app (Theme.swift): paper, ink, rubber-stamp red, a wooden rail and brass.
+   Plain CSS, relative URLs, no build step, so it works as a GitHub Pages site from any sub-path. */
+
+:root {
+  --desk: #EDE5D6;
+  --sheet: #F5EFE3;
+  --paper: #FBF8F1;
+  --hairline: #D6CAB5;
+  --outline: #CDBFA9;
+  --ink: #231E18;
+  --ink-soft: #4E4438;
+  --ink-quiet: #62574A;
+  --stamp: #8E2A20;
+  --rail: #8B6A47;
+  --brass: #A88442;
+  --fire: #2A2622;
+
+  --serif: "New York", "Iowan Old Style", "Charter", "Georgia", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+
+  --shadow: 0 24px 48px rgba(60, 40, 10, .30);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background-color: var(--desk);
+  /* a little paper grain over a soft light, like the desk in the app */
+  background-image:
+    radial-gradient(ellipse at 20% -10%, #F7F1E6 0%, rgba(247, 241, 230, 0) 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .36  0 0 0 0 .28  0 0 0 0 .16  0 0 0 .10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+b, strong { font-weight: 650; }
+
+.wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+.narrow { max-width: 720px; }
+
+.skip {
+  position: absolute; left: .75rem; top: -4rem; z-index: 100;
+  background: var(--ink); color: var(--paper); padding: .6rem 1rem; border-radius: 999px;
+}
+.skip:focus { top: .75rem; }
+
+:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; border-radius: 6px; }
+
+/* ---------- type ---------- */
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 650; line-height: 1.08; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: clamp(2rem, 4.4vw, 3.1rem); }
+p { margin: 0 0 1rem; }
+
+.kicker {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-quiet); margin-bottom: .9rem;
+}
+
+.aside { color: var(--ink-quiet); font-size: .98rem; }
+
+/* ---------- the rubber stamp and the wax seal ---------- */
+
+.stamp {
+  display: inline-block;
+  font-family: var(--mono); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--stamp); border: 2.5px solid var(--stamp); border-radius: 4px;
+  padding: .28em .6em; background: rgba(251, 248, 241, .55);
+  mix-blend-mode: multiply;
+}
+.stamp-sm { font-size: .72rem; transform: rotate(-3deg); }
+
+.inline-stamp {
+  font-family: var(--mono); font-weight: 700; font-size: .82em; color: var(--stamp);
+  border: 2px solid var(--stamp); border-radius: 3px; padding: .05em .4em; white-space: nowrap;
+  display: inline-block; transform: rotate(-2deg);
+}
+
+.seal { position: absolute; width: clamp(84px, 12vw, 140px); height: auto; overflow: visible; filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .28)); z-index: 3; }
+
+/* ---------- header ---------- */
+
+.top { position: sticky; top: 0; z-index: 50; background: rgba(245, 239, 227, .9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--hairline); }
+.top-row { display: flex; align-items: center; gap: 1.25rem; min-height: 64px; padding-block: .4rem; }
+.brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; font-family: var(--serif); font-weight: 700; font-size: 1.35rem; }
+.brand img { border-radius: 8px; box-shadow: 0 2px 5px rgba(60, 40, 10, .3); }
+.top nav { margin-left: auto; display: flex; gap: 1.4rem; font-size: .95rem; }
+.top nav a { text-decoration: none; color: var(--ink-soft); }
+.top nav a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- buttons and chips ---------- */
+
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: .6rem; padding: 0; margin: 1.6rem 0 0; }
+.chips li {
+  font-family: var(--mono); font-size: .85rem; color: var(--ink-soft);
+  border: 2px solid var(--rail); border-radius: 999px; background: var(--sheet); padding: .35rem 1rem;
+}
+
+.cta-row { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+.btn {
+  display: inline-flex; align-items: center; min-height: 52px; padding: 0 1.6rem; border-radius: 999px;
+  font-weight: 600; font-size: 1.02rem; text-decoration: none;
+}
+.btn-dark { background: var(--ink); color: var(--paper); cursor: default; }
+.btn-ghost { border: 2px solid var(--outline); background: var(--sheet); }
+.btn-ghost:hover { border-color: var(--rail); }
+
+/* ---------- the phone ---------- */
+
+.phone {
+  container-type: inline-size;
+  position: relative; margin: 0; width: min(320px, 74vw); aspect-ratio: 1206 / 2622;
+  background: var(--ink); border: 8px solid var(--ink); border-radius: 52px; box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 44px; }
+/* one drawn island, so every screenshot has the same one whatever the simulator showed */
+.phone::after {
+  content: ""; position: absolute; top: 1.5%; left: 50%; width: 31%; height: 4.1%; transform: translateX(-50%);
+  background: #000; border-radius: 999px;
+}
+.phone-dark { border-color: #0f0d0b; }
+.tilt-r { transform: rotate(3deg); }
+.tilt-l { transform: rotate(-3deg); }
+
+/* ---------- hero ---------- */
+
+.hero { padding: clamp(2.5rem, 7vw, 5.5rem) 0 clamp(3rem, 7vw, 5rem); }
+.hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 2rem; }
+.hero h1 { font-size: clamp(4.2rem, 13vw, 9.6rem); font-weight: 600; letter-spacing: -.04em; line-height: .95; }
+.title-row { display: flex; align-items: center; gap: clamp(.6rem, 1.6vw, 1.2rem); }
+.title-seal { flex: none; width: clamp(56px, 9vw, 112px); height: auto; margin-top: .25em; transform: rotate(-8deg); overflow: visible; filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .28)); }
+.tagline { font-family: var(--serif); font-style: italic; font-size: clamp(1.5rem, 3.2vw, 2.4rem); color: var(--ink-soft); margin: .8rem 0 1.4rem; line-height: 1.15; }
+.lede { max-width: 34rem; font-size: 1.2rem; color: var(--ink-soft); }
+.lede strong { color: var(--ink); }
+.hero-art { position: relative; justify-self: center; padding: 1rem 0; }
+
+/* ---------- the graveyard ---------- */
+
+.graveyard { background: var(--sheet); border-block: 1px solid var(--hairline); padding: clamp(3rem, 7vw, 5.5rem) 0; }
+.graveyard h2 { margin-bottom: 1.5rem; }
+.graveyard p { font-size: 1.2rem; color: var(--ink-soft); }
+.graveyard .punch { font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--ink); font-weight: 650; margin-top: 1.5rem; }
+.graveyard .punch span { font-style: italic; font-weight: 500; color: var(--stamp); }
+
+/* ---------- feature rows ---------- */
+
+.anchor { scroll-margin-top: 72px; }
+
+.feature, .shelf-band, .fire { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(1.5rem, 6vw, 5rem); }
+.feature.flip .feature-grid > .feature-art { order: 2; }
+.feature-art { position: relative; display: grid; place-items: center; padding: 1rem 0; }
+.feature-copy { max-width: 30rem; }
+.feature-copy h2 { margin-bottom: 1.1rem; }
+.feature-copy p { color: var(--ink-soft); }
+.feature-copy .aside { border-left: 3px solid var(--outline); padding-left: .9rem; }
+
+.feature-art .phone { z-index: 1; }
+
+/* the shelf band gets a wooden rail across the top, like the app's shelf */
+.shelf-band { position: relative; background: var(--sheet); border-block: 1px solid var(--hairline); }
+.shelf-band::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 18px; height: 14px;
+  background: linear-gradient(#9d7a51, #7d5d3b); box-shadow: 0 6px 10px rgba(60, 40, 10, .25);
+}
+.shelf-band .feature-grid { padding-top: 1.5rem; }
+
+/* ---------- consequences ---------- */
+
+.fire { background: var(--fire); color: var(--paper); }
+.fire .kicker { color: #CDBFA9; }
+.fire .feature-copy p { color: #E7DECB; }
+.fire .feature-copy .aside { border-color: #5d5448; color: #CDBFA9; }
+.fire .feature-grid { align-items: center; }
+
+/* ---------- No. 01: a drawn Safari share sheet, with the Pressed icon in the row of apps ---------- */
+
+.phone-share { background: #fff; }
+.share { position: absolute; inset: 0; background: #fff; font-family: var(--sans); color: #111; font-size: 4.1cqw; overflow: hidden; }
+.sh-status { position: absolute; left: 0; right: 0; top: 0; z-index: 3; display: flex; justify-content: space-between; align-items: center; padding: 4.6% 9% 0; font-weight: 650; font-size: .8em; color: #111; }
+.sh-bars { display: inline-flex; gap: 2px; align-items: flex-end; }
+.sh-bars i { width: 3px; background: #111; border-radius: 1px; }
+.sh-bars i:nth-child(1) { height: 4px; } .sh-bars i:nth-child(2) { height: 6px; } .sh-bars i:nth-child(3) { height: 8px; } .sh-bars i:nth-child(4) { height: 10px; }
+
+.sh-page { position: absolute; inset: 9% 0 0; padding: 0 8%; }
+.sh-site { font-family: var(--mono); font-size: .72em; letter-spacing: .1em; text-transform: uppercase; color: #888; padding: .9em 0 1.1em; border-bottom: 1px solid #e6e6e6; margin-bottom: 1.3em; }
+.sh-h { font-family: var(--serif); font-weight: 700; font-size: 1.75em; line-height: 1.08; margin: 0 0 .5em; }
+.sh-by { font-size: .78em; color: #777; margin: 0 0 1em; }
+.sh-hero { height: 11em; border-radius: .5em; background: linear-gradient(135deg, #cfd8dc, #a9bcc4); margin-bottom: 1em; }
+.sh-page i { display: block; height: .55em; background: #e4e4e4; border-radius: 4px; margin-bottom: .6em; }
+.sh-page i.short { width: 62%; }
+
+.sh-dim { position: absolute; inset: 0; background: rgba(0, 0, 0, .32); z-index: 1; }
+
+.sh-sheet { position: absolute; left: 0; right: 0; bottom: 0; top: 39%; z-index: 2; background: #f2f2f7; border-radius: 1.4em 1.4em 0 0; padding: .6em 5% 0; }
+.sh-grab { width: 11%; height: .35em; background: #c4c4c8; border-radius: 99px; margin: 0 auto .9em; }
+.sh-head { display: flex; align-items: center; gap: .8em; padding-bottom: .9em; border-bottom: 1px solid #dcdce0; }
+.sh-fav { flex: none; width: 2.6em; height: 2.6em; border-radius: .55em; background: linear-gradient(135deg, #cfd8dc, #a9bcc4); }
+.sh-title { display: grid; min-width: 0; line-height: 1.2; }
+.sh-title b { font-size: .82em; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sh-title em { font-style: normal; font-size: .72em; color: #8a8a8e; }
+.sh-x { margin-left: auto; flex: none; width: 1.9em; height: 1.9em; border-radius: 50%; background: #e1e1e6; display: grid; place-items: center; color: #6c6c70; font-size: 1.05em; line-height: 1; }
+
+.sh-apps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2%; padding: 1.1em 0 1em; border-bottom: 1px solid #dcdce0; }
+.sh-app { display: grid; justify-items: center; gap: .45em; font-size: .68em; color: #333; text-align: center; }
+.sh-ic { width: 4.4em; aspect-ratio: 1; border-radius: 1.05em; background: var(--c); }
+.sh-more { background: #e1e1e6; color: #555; display: grid; place-items: center; letter-spacing: .08em; font-size: 1.1em; }
+.sh-app img { width: 4.4em; height: 4.4em; border-radius: 1.05em; box-shadow: 0 0 0 .22em var(--brass), 0 .3em .7em rgba(60, 40, 10, .35); }
+.sh-pressed { font-weight: 700; color: #111; }
+
+.sh-list { display: grid; margin-top: .9em; background: #fff; border-radius: .8em; overflow: hidden; }
+.sh-list span { padding: .85em 1em; font-size: .85em; border-bottom: 1px solid #ececf0; }
+.sh-list span:last-child { border-bottom: 0; }
+
+/* ---------- No. 05 and No. 06: screen recordings that loop, muted, like a GIF but sharper and much smaller ---------- */
+
+.phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 44px; display: block; background: var(--ink); }
+
+/* ---------- upcoming: Focus mode (a drawn mockup, so it never claims to be a screenshot) ---------- */
+
+.next { background: var(--sheet); border-block: 1px solid var(--hairline); padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.mock-note { font-family: var(--mono); font-size: .8rem; color: var(--ink-quiet); border-top: 1px dashed var(--outline); padding-top: .8rem; margin-top: 1.4rem; }
+.stamp-mock { position: absolute; right: 2%; bottom: 14%; z-index: 3; font-size: 1.05rem; transform: rotate(8deg); background: var(--paper); mix-blend-mode: normal; }
+
+.phone-mock { background: var(--desk); }
+.mock-screen { position: absolute; inset: 0; background: #b7ab97; font-family: var(--sans); }
+.mock-status { display: flex; justify-content: space-between; align-items: center; padding: 4.6% 9% 0; font-weight: 650; font-size: .78rem; color: var(--ink); position: absolute; left: 0; right: 0; top: 0; z-index: 2; }
+.mock-bars { display: inline-flex; gap: 2px; align-items: flex-end; }
+.mock-bars i { width: 3px; background: var(--ink); border-radius: 1px; }
+.mock-bars i:nth-child(1) { height: 4px; } .mock-bars i:nth-child(2) { height: 6px; } .mock-bars i:nth-child(3) { height: 8px; } .mock-bars i:nth-child(4) { height: 10px; }
+
+/* the locked app, blurred out behind the shield */
+.mock-apps { position: absolute; inset: 16% 8% 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12%; align-content: start; filter: blur(5px); opacity: .85; }
+.mock-apps span { aspect-ratio: 1; border-radius: 22%; background: var(--c); }
+
+.mock-shield {
+  position: absolute; inset: 0; background: rgba(237, 229, 214, .8); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  padding: 0 10%; gap: 0;
+}
+.mock-seal { width: 22%; height: auto; margin-bottom: 7%; }
+.mock-title { font-family: var(--serif); font-weight: 700; font-size: clamp(1.15rem, 2.4vw, 1.45rem); line-height: 1.1; margin: 0 0 .6rem; color: var(--ink); }
+.mock-sub { font-size: .8rem; line-height: 1.4; color: var(--ink-soft); margin: 0 0 1.6rem; }
+.mock-btn { display: block; width: 100%; padding: .75rem 0; border-radius: 12px; font-weight: 600; font-size: .85rem; }
+.mock-btn-dark { background: var(--ink); color: var(--paper); margin-bottom: .6rem; }
+.mock-btn-quiet { color: var(--ink); }
+
+/* ---------- small print: the very bottom of the page ---------- */
+
+.small-print { padding: clamp(2rem, 4vw, 3rem) 0; border-top: 1px solid var(--hairline); }
+.small-print h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); max-width: none; margin-bottom: 1.1rem; }
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem 2rem; }
+.mini h3 { font-family: var(--sans); font-size: .82rem; font-weight: 650; letter-spacing: .02em; margin-bottom: .3rem; }
+.mini p { color: var(--ink-quiet); font-size: .88rem; line-height: 1.45; margin: 0; }
+.disclaimer { margin: 1.4rem 0 0; font-size: .85rem; color: var(--ink-quiet); max-width: 52rem; }
+.disclaimer b { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--stamp); }
+
+/* ---------- footer ---------- */
+
+.foot { border-top: 1px solid var(--hairline); background: var(--sheet); padding: 2.2rem 0 calc(2.2rem + env(safe-area-inset-bottom)); color: var(--ink-quiet); font-size: .95rem; }
+.foot-row p { margin: 0 0 .5rem; }
+.foot-brand { display: flex; align-items: center; gap: .6rem; font-family: var(--serif); font-weight: 700; font-size: 1.2rem; color: var(--ink); }
+.foot-brand img { border-radius: 7px; }
+.fine { font-size: .85rem; max-width: 52rem; }
+
+/* ---------- motion ---------- */
+
+.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 860px) {
+  .hero-grid, .feature-grid { grid-template-columns: 1fr; }
+  .feature.flip .feature-grid > .feature-art { order: 0; }
+  .shelf-band .feature-grid .feature-art { order: 2; }
+  .feature-copy { max-width: none; }
+  .top nav { display: none; }
+  .stamp-sm { margin-left: auto; }
+  .hero-art { margin-top: 1rem; }
+    }
+
+/* ---------- plain document pages: privacy, support, 404 ---------- */
+
+.doc { padding-block: clamp(2rem, 5vw, 4rem); }
+.doc h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin-bottom: .6rem; }
+.doc h2 { font-size: clamp(1.3rem, 2.6vw, 1.7rem); margin: 2.2rem 0 .6rem; }
+.doc p, .doc li { color: var(--ink-soft); }
+.doc ul, .doc ol { padding-left: 1.3rem; margin: 0 0 1rem; }
+.doc li { margin-bottom: .4rem; }
+.doc a { text-decoration-color: var(--rail); text-underline-offset: 3px; }
+.doc .updated { font-family: var(--mono); font-size: .8rem; color: var(--ink-quiet); margin-bottom: 1.6rem; }
+.doc .short { background: var(--paper); border: 2px solid var(--outline); border-radius: 10px; padding: 1.2rem 1.4rem .6rem; margin: 1.2rem 0 .5rem; box-shadow: 0 8px 18px rgba(60, 40, 10, .08); }
+.doc .short h2 { margin-top: 0; }
+.doc details { border-top: 1px solid var(--hairline); padding: .9rem 0; }
+.doc details:last-of-type { border-bottom: 1px solid var(--hairline); }
+.doc summary { cursor: pointer; font-family: var(--serif); font-weight: 650; font-size: 1.15rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; color: var(--ink); }
+.doc summary::-webkit-details-marker { display: none; }
+.doc summary::after { content: "+"; font-family: var(--mono); font-weight: 400; color: var(--stamp); }
+.doc details[open] summary::after { content: "\2212"; }
+.doc details p { margin: .6rem 0 0; }
+
+/* placeholders that must be filled in before publishing */
+mark.todo { background: #f6e3a1; color: var(--ink); padding: 0 .3em; border-radius: 3px; }
+
+.foot-links { margin: 0 0 .5rem; }
+.foot-links a { text-decoration-color: var(--rail); text-underline-offset: 3px; }
