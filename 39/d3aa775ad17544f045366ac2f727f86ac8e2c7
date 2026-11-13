@@ -1,0 +1,19 @@
+index.html
+  s_e909e9e61a7f16::t_322697018e593a 157,194
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "39d3aa775ad17544f045366ac2f727f86ac8e2c7",
+  "prompts": {},
+  "sessions": {
+    "s_e909e9e61a7f16": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b93f182a-8b46-4186-88ec-31c4200410f4",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Dian Maisara <dian.maisara@foodpanda.com>"
+    }
+  }
+}
