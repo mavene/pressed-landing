@@ -63,3 +63,19 @@
     el.replaceWith(link);
   });
 })();
+
+// The TestFlight beta button. Hidden until a public link exists: put it in <body data-testflight-url="..."> in index.html.
+// It sits after the "Coming soon" button, and goes away once the App Store link is live.
+(function () {
+  var url = (document.body.getAttribute('data-testflight-url') || '').trim();
+  if (!/^https:\/\/testflight\.apple\.com\/join\//.test(url)) return;
+  if (/^https:\/\/apps\.apple\.com\//.test((document.body.getAttribute('data-app-store-url') || '').trim())) return;
+  var anchor = document.querySelector('.cta-row [data-store]');
+  if (!anchor) return;
+  var link = document.createElement('a');
+  link.className = 'btn btn-beta';
+  link.href = url;
+  link.rel = 'noopener';
+  link.textContent = 'Join the TestFlight beta';
+  anchor.after(link);
+})();

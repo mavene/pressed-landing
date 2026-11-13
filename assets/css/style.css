@@ -316,3 +316,6 @@ mark.todo { background: #f6e3a1; color: var(--ink); padding: 0 .3em; border-radi
 
 .foot-links { margin: 0 0 .5rem; }
 .foot-links a { text-decoration-color: var(--rail); text-underline-offset: 3px; }
+
+.btn-beta { background: var(--rail); color: var(--paper); }
+.btn-beta:hover { filter: brightness(1.08); }
