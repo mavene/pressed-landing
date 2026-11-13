@@ -167,13 +167,8 @@ p { margin: 0 0 1rem; }
 
 .feature-art .phone { z-index: 1; }
 
-/* the shelf band gets a wooden rail across the top, like the app's shelf */
-.shelf-band { position: relative; background: var(--sheet); border-block: 1px solid var(--hairline); }
-.shelf-band::before {
-  content: ""; position: absolute; left: 0; right: 0; top: 18px; height: 14px;
-  background: linear-gradient(#9d7a51, #7d5d3b); box-shadow: 0 6px 10px rgba(60, 40, 10, .25);
-}
-.shelf-band .feature-grid { padding-top: 1.5rem; }
+/* the shelf band sits on the same desk as the feature rows around it, so the colour flows straight through */
+.shelf-band { position: relative; }
 
 /* ---------- consequences ---------- */
 
@@ -228,9 +223,10 @@ p { margin: 0 0 1rem; }
 
 /* ---------- upcoming: Focus mode (a drawn mockup, so it never claims to be a screenshot) ---------- */
 
-.next { background: var(--sheet); border-block: 1px solid var(--hairline); padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.next { scroll-margin-top: 72px; background: var(--sheet); border-block: 1px solid var(--hairline); padding: clamp(2.5rem, 5vw, 4rem) 0; }
 .mock-note { font-family: var(--mono); font-size: .8rem; color: var(--ink-quiet); border-top: 1px dashed var(--outline); padding-top: .8rem; margin-top: 1.4rem; }
-.stamp-mock { position: absolute; right: 2%; bottom: 14%; z-index: 3; font-size: 1.05rem; transform: rotate(8deg); background: var(--paper); mix-blend-mode: normal; }
+/* the "Upcoming" stamp stands in for the small label above the Focus mode heading */
+.stamp-kicker { font-size: .9rem; transform: rotate(-3deg); background: transparent; margin: .2rem 0 .3rem; }
 
 .phone-mock { background: var(--desk); }
 .mock-screen { position: absolute; inset: 0; background: #b7ab97; font-family: var(--sans); }
